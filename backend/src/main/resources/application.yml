@@ -1,0 +1,30 @@
+server:
+  port: ${BACKEND_PORT:8080}
+
+spring:
+  application:
+    name: admissions-backend
+  datasource:
+    url: jdbc:postgresql://${POSTGRES_HOST:localhost}:${POSTGRES_PORT:5432}/${POSTGRES_DB:admissions_db}
+    username: ${POSTGRES_USER:postgres}
+    password: ${POSTGRES_PASSWORD:postgres}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+  neo4j:
+    uri: ${NEO4J_URI:bolt://localhost:7687}
+    authentication:
+      username: ${NEO4J_USER:neo4j}
+      password: ${NEO4J_PASSWORD:password}
+
+ai-service:
+  url: ${AI_SERVICE_URL:http://localhost:8000}
+
+jwt:
+  secret: ${JWT_SECRET:your_default_secret_key_that_is_long_enough}
+  expiration: ${JWT_EXPIRATION_MS:86400000}

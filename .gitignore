@@ -1,0 +1,29 @@
+# IDE & System
+.idea/
+.vscode/
+*.swp
+*.DS_Store
+Thumbs.db
+
+# Environment variables
+.env
+*.env.local
+
+# Backend (Java Spring Boot)
+backend/target/
+backend/.mvn/
+backend/*.log
+
+# Frontend (React JS)
+frontend/node_modules/
+frontend/dist/
+frontend/dist-ssr/
+frontend/*.local
+
+# AiService (Python)
+aiservice/__pycache__/
+aiservice/*.pyc
+aiservice/.venv/
+aiservice/venv/
+aiservice/env/
+aiservice/.pytest_cache/

@@ -1,40 +1,52 @@
-# Nhật ký Sự cố / Bug Log: [Tên lỗi hoặc Mô tả ngắn gọn]
+# 🐞 Báo cáo Sự cố & Nhật ký Khắc phục: [TÊN VẤN ĐỀ ABC]
 
-- **Ngày xảy ra**: YYYY-MM-DD
-- **Service bị ảnh hưởng**: [Backend / Frontend / AiService / Kafka / PostgreSQL / Neo4j]
-- **Mức độ**: [Low / Medium / High / Critical]
+> **Ngày ghi nhận**: YYYY-MM-DD  
+> **Module bị ảnh hưởng**: [Backend / Frontend / Neo4j / PostgreSQL / TWD / RAG]  
+> **Mức độ nghiêm trọng**: [Critical | High | Medium | Low]  
+> **Trạng thái**: [RESOLVED | INVESTIGATING]  
 
 ---
 
-## 1. Chi tiết Lỗi (Error Details)
-- **Mô tả lỗi**: [Mô tả hiện tượng xảy ra khi thực thi/chạy ứng dụng]
-- **Thông báo lỗi / Stacktrace**:
+## 1. Vấn đề Phát sinh (Problem Statement - ABC)
+- **Mô tả hiện tượng**: [Mô tả chi tiết triệu chứng người dùng hoặc hệ thống gặp phải]
+- **Tác động**: [Ví dụ: Thí sinh lọc điểm 15-30 không thấy ngành nào, gây hiểu nhầm hệ thống lỗi]
+- **Log lỗi / Stacktrace (nếu có)**:
 ```text
 [Dán log lỗi hoặc stack trace tại đây]
 ```
 
 ---
 
-## 2. Phân tích Nguyên nhân (Root Cause)
-- [Nêu nguyên nhân chi tiết dẫn đến lỗi này]
+## 2. Phân tích Nguyên nhân Gốc rễ (Root Cause Analysis)
+- **Nguyên nhân kỹ thuật**: [Phân tích chi tiết tại sao lỗi lại xảy ra ở tầng data/logic/query/css/auth...]
+- **Điểm nghẽn/Lỗ hổng**: [Ví dụ: Điều kiện if (r.score == null) loại bỏ toàn bộ ngành 2026 chưa có điểm chuẩn]
 
 ---
 
-## 3. Nhật ký Khắc phục (Fix Log)
+## 3. Hành động & Thay đổi Đã Áp dụng (Changes Applied - XYZ)
 
-### 🔴 Fix lần 1:
+### 🔴 Lần thử nghiệm 1 (Fix lần 1):
 - **Thời gian**: YYYY-MM-DD HH:mm
-- **Phương án chỉnh sửa**: [Mô tả chi tiết việc chỉnh sửa abc...]
-- **Kết quả**: [Thành công / Thất bại]
-- **Ghi chú/Lỗi phát sinh thêm (nếu thất bại)**: [Chi tiết nếu sau khi fix lần 1 vẫn chưa được]
+- **File chỉnh sửa**: `path/to/modified/file`
+- **Thay đổi cụ thể**: [Mô tả chi tiết code hoặc config đã sửa]
+- **Kết quả**: [Thành công / Thất bại - Chi tiết phản hồi]
 
-### 🔴 Fix lần 2 (nếu Fix lần 1 chưa được):
+### 🔴 Lần thử nghiệm 2 (nếu cần):
 - **Thời gian**: YYYY-MM-DD HH:mm
-- **Phương án chỉnh sửa**: [Mô tả tiếp tục chỉnh sửa xyz...]
-- **Kết quả**: [Thành công / Thất bại]
+- **Thay đổi cụ thể**: ...
+- **Kết quả**: ...
 
 ---
 
-## 🟢 Kết luận & Giải pháp Cuối cùng
-- **Trạng thái**: [RESOLVED / PENDING]
-- **Giải pháp dứt điểm**: [Tóm tắt giải pháp dứt điểm để tra cứu lại sau này]
+## 4. Kết quả Thu được & Nghiệm thu (Outcome & Verification - AA)
+- **Trước khi áp dụng**: [Hiện tượng sai lệch ban đầu]
+- **Sau khi áp dụng**: [Hiện tượng đúng như mong đợi sau khi fix]
+- **Kiểm thử nghiệm thu**:
+  - [x] Unit Tests / Integration Tests: Passed
+  - [x] Build Verification (`npm run build` / `mvn test`): 0 errors
+  - [x] Manual Verification (Kiểm tra thực tế giao diện/API): Hoạt động ổn định
+
+---
+
+## 5. Bài học Rút ra & Quy tắc Bất biến (Invariant Rule)
+- 📌 **Quy tắc phòng ngừa**: [Ghi lại bài học kinh nghiệm để không bao giờ lặp lại lỗi này trong các module sau]

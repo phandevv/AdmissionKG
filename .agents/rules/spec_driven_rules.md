@@ -6,29 +6,46 @@ Bộ quy tắc bắt buộc này thiết lập phương pháp luận **Phát tri
 
 ## 🎯 1. NGUYÊN TẮC BẤT BIẾN (CORE INVARIANTS)
 
-1. **NO CODE WITHOUT SPEC (Không code khi chưa có Đặc tả)**:
-   - Trước khi triển khai một Feature/Epic/Service mới, BẮT BUỘC phải lập tệp Đặc tả kỹ thuật chuẩn tại thư mục `docs/specs/` theo mẫu [spec_template.md](../templates/spec_template.md).
+1. **TRANSPARENT GREETING & RULE DECLARATION (Lời chào minh bạch Rule)**:
+   - MỌI câu trả lời bắt buộc phải mở đầu bằng lời chào định dạng:
+     `> **phandevv đẹp trai! Tôi đã áp dụng các rule [liệt kê: spec_driven_rules, backend_rules, ...] cho feature [tên feature/tác vụ] này.**`
+   - Điều này giúp lập trình viên kiểm tra tức thì các quy chuẩn đang được kích hoạt.
+
+2. **PROBLEM ANALYSIS FIRST (Phân tích bài toán chuyên sâu trước)**:
+   - Tuyệt đối không nhảy vào viết Spec hoặc Code khi chưa phân tích kỹ bài toán thực tế:
+     * Định nghĩa không gian bài toán (Problem Space), các biến số đầu vào/đầu ra.
+     * Cơ sở mô hình toán học (Three-Way Decision, Ma trận tổn thất chi phí, Ngưỡng $\alpha, \beta$, Xác suất hậu nghiệm).
+     * Mối liên hệ bài toán với Knowledge Graph & Trải nghiệm thí sinh.
+
+3. **NO CODE WITHOUT SPEC (Không code khi chưa có Đặc tả)**:
+   - Sau khi phân tích bài toán, BẮT BUỘC phải lập tệp Đặc tả kỹ thuật chuẩn tại thư mục `docs/specs/` theo mẫu [spec_template.md](../templates/spec_template.md).
    - Tuyệt đối không nhảy vào code ngay khi chưa chốt DTO Contracts, Schema và Acceptance Criteria.
 
-2. **TEST-FIRST & VERIFICATION (Kiểm thử trước / TDD)**:
+4. **TEST-FIRST & VERIFICATION (Kiểm thử trước / TDD)**:
    - Đối với các module logic tính toán (như Three-Way Decision, Điểm tổ hợp, Điểm ưu tiên, Cypher Query Router): Phải viết Unit Test (JUnit 5 / Vitest) để định nghĩa trước hành vi mong đợi.
    - Mã nguồn triển khai chỉ được coi là hoàn thành khi 100% Tests Pass và `mvn test` / `npm run build` không có lỗi.
 
-3. **TOKEN CONSERVATION & CONTEXT HYGIENE (Tối ưu hóa Token)**:
+5. **TOKEN CONSERVATION & CONTEXT HYGIENE (Tối ưu hóa Token)**:
    - **Spec-Anchoring**: Trong các prompt tiếp theo, chỉ dẫn chiếu link file đặc tả (`docs/specs/...`), không lặp lại toàn bộ yêu cầu dài dòng.
    - **Slicing**: Sử dụng công cụ `view_file` theo khoảng dòng (`StartLine` - `EndLine`), tuyệt đối không đọc toàn bộ file lớn nếu chỉ cần sửa 1 hàm.
    - **Local Edits**: Sử dụng `replace_file_content` cho các khối sửa đổi chính xác, không ghi đè toàn bộ file mã nguồn.
 
 ---
 
-## 🔄 2. QUY TRÌNH 4 BƯỚC PHÁT TRIỂN CHUẨN (4-STEP SDD WORKFLOW)
+## 🔄 2. QUY TRÌNH 5 BƯỚC PHÁT TRIỂN CHUẨN (5-STEP SDD WORKFLOW)
 
 ```mermaid
 graph LR
-    Step1["1. SPECIFY<br/>(Lập file docs/specs/*.md)"] --> Step2["2. TEST DESIGN<br/>(Viết Unit Tests / Assertions)"]
+    Step0["0. PROBLEM ANALYSIS<br/>(Phân tích bài toán & Toán học)"] --> Step1["1. SPECIFY<br/>(Lập file docs/specs/*.md)"]
+    Step1 --> Step2["2. TEST DESIGN<br/>(Viết Unit Tests / Assertions)"]
     Step2 --> Step3["3. IMPLEMENT<br/>(Viết Code Backend / Neo4j / UI)"]
-    Step3 --> Step4["4. VERIFY & WALKTHROUGH<br/>(Chạy test tự động & Cập nhật Docs)"]
+    Step3 --> Step4["4. VERIFY & WALKTHROUGH<br/>(Chạy test tự động & Nghiệm thu)"]
 ```
+
+### Bước 0: PROBLEM ANALYSIS (Phân tích bài toán & Mô hình hóa Toán học)
+* Khảo sát bản chất bài toán tuyển sinh thực tế (tâm lý thí sinh, rủi ro trượt nguyện vọng, biến động phổ điểm thi).
+* Xây dựng mô hình toán học giải quyết bài toán: công thức xác suất, hàm tổn thất chi phí, ngưỡng phân vùng $(\alpha, \beta)$.
+* Phân tích luồng tích hợp với Graph-RAG và Danh sách nguyện vọng.
 
 ### Bước 1: SPECIFY (Lập tài liệu Đặc tả)
 * Tạo tệp `docs/specs/[EPIC_NAME]_SPEC.md` với đầy đủ:

@@ -22,7 +22,7 @@ Dự án đồng thời sử dụng **Spring Data JPA** (PostgreSQL) và **Sprin
 Khi các Service (`UniversityService`, `MajorService`) khai báo `@Transactional`, Spring Boot không xác định được bean nào là mặc định nên trả về lỗi `500 Internal Server Error`.
 
 ### Phương án Khắc phục:
-1. Tạo class cấu hình [`TransactionConfig.java`](file:///c:/Users/bbqdd/Documents/_KhoaLuanTN/AdmissionKG/backend/src/main/java/com/admissions/backend/common/config/TransactionConfig.java) đánh dấu `@Primary` cho `transactionManager` (JPA).
+1. Tạo class cấu hình [`TransactionConfig.java`](../../backend/src/main/java/com/admissions/backend/common/config/TransactionConfig.java) đánh dấu `@Primary` cho `transactionManager` (JPA).
 2. Chỉ định rõ `value = "transactionManager"` trong annotation `@Transactional` tại các Service JPA.
 
 ---
@@ -40,4 +40,4 @@ nginx/1.31.3
 Nginx Web Server chạy ở Frontend container mặc định giới hạn dung lượng file tải lên (`client_max_body_size`) là **1MB**. File PDF Đề án tuyển sinh thường có dung lượng từ 3MB - 20MB nên Nginx chủ động từ chối request ngay tại tầng Reverse Proxy trước khi chuyển tới Spring Boot.
 
 ### Phương án Khắc phục:
-Thêm cấu hình `client_max_body_size 50M;` trong file [`frontend/nginx.conf`](file:///c:/Users/bbqdd/Documents/_KhoaLuanTN/AdmissionKG/frontend/nginx.conf#L5) và tăng `proxy_read_timeout` lên 180s cho phép xử lý file PDF lớn & chạy OCR.
+Thêm cấu hình `client_max_body_size 50M;` trong file [`frontend/nginx.conf`](../../frontend/nginx.conf) và tăng `proxy_read_timeout` lên 180s cho phép xử lý file PDF lớn & chạy OCR.

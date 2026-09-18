@@ -24,7 +24,7 @@ Không thể bóc tách dữ liệu JSON từ văn bản cung cấp: Unexpected 
 
 ### 🛠 Phương án Khắc phục:
 
-1. **Cấu hình API Request ([`DeepSeekLlmService.java`](file:///c:/Users/bbqdd/Documents/_KhoaLuanTN/AdmissionKG/backend/src/main/java/com/admissions/backend/chat/service/DeepSeekLlmService.java))**:
+1. **Cấu hình API Request ([`DeepSeekLlmService.java`](../../backend/src/main/java/com/admissions/backend/chat/service/DeepSeekLlmService.java))**:
    - Thiết lập `"max_tokens": 8192` cho luồng bóc tách JSON.
    - Thêm tham số `"response_format": {"type": "json_object"}` để ép LLM trả về cấu trúc JSON chuẩn xác.
    - Đặt `temperature: 0.1` tăng độ nhất quán schema.

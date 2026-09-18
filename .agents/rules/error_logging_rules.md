@@ -7,7 +7,7 @@ Tài liệu quy định quy trình bắt buộc khi phát hiện và xử lý l�
 ## 📌 1. Quy định Lưu trữ & Đặt tên
 - **Thư mục lưu**: `.agents/error_logs/`
 - **Định dạng file**: `YYYY-MM-DD.md` hoặc `YYYY-MM-DD_<ten_loi>.md`
-- **File mẫu**: Tham chiếu tại [template.md](file:///c:/Users/bbqdd/Documents/_KhoaLuanTN/AdmissionKG/.agents/error_logs/template.md)
+- **File mẫu**: Tham chiếu tại [template.md](../error_logs/template.md)
 
 ---
 

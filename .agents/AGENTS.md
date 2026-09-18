@@ -18,6 +18,7 @@ Dự án phân chia các bộ quy tắc và kỹ năng theo từng Module chuyê
 │   ├── backend_rules.md                 # Quy chuẩn cho Backend (Spring Boot Module Blueprint)
 │   ├── frontend_rules.md                # Quy chuẩn cho Frontend (React JS Feature Modules)
 │   ├── aiservice_rules.md               # Quy chuẩn cho Module Java AI & Graph RAG
+│   ├── spec_driven_rules.md             # Quy chuẩn Spec-Driven Development (SpecKit & Invariants)
 │   └── error_logging_rules.md           # Quy tắc xử lý & ghi nhật ký Bug/Lỗi
 └── skills/                              # [Skills] Hướng dẫn kỹ năng chuyên biệt
     ├── backend-dev/SKILL.md             # Kỹ năng Spring Boot & Neo4j Repository
@@ -53,7 +54,8 @@ Dự án phân chia các bộ quy tắc và kỹ năng theo từng Module chuyê
 
 ## 📑 3. Danh sách Quy tắc & Links tham chiếu
 
-- ☕ **Backend Rules**: Xem chi tiết tại [backend_rules.md](file:///c:/Users/bbqdd/Documents/_KhoaLuanTN/AdmissionKG/.agents/rules/backend_rules.md)
-- ⚛️ **Frontend Rules**: Xem chi tiết tại [frontend_rules.md](file:///c:/Users/bbqdd/Documents/_KhoaLuanTN/AdmissionKG/.agents/rules/frontend_rules.md)
-- 🐍 **Java AI Module Rules**: Xem chi tiết tại [aiservice_rules.md](file:///c:/Users/bbqdd/Documents/_KhoaLuanTN/AdmissionKG/.agents/rules/aiservice_rules.md)
-- 🐞 **Error Logging Rules**: Xem chi tiết tại [error_logging_rules.md](file:///c:/Users/bbqdd/Documents/_KhoaLuanTN/AdmissionKG/.agents/rules/error_logging_rules.md)
+- ☕ **Backend Rules**: Xem chi tiết tại [backend_rules.md](rules/backend_rules.md)
+- ⚛️ **Frontend Rules**: Xem chi tiết tại [frontend_rules.md](rules/frontend_rules.md)
+- 🐍 **Java AI Module Rules**: Xem chi tiết tại [aiservice_rules.md](rules/aiservice_rules.md)
+- 📐 **Spec-Driven Rules**: Xem chi tiết tại [spec_driven_rules.md](rules/spec_driven_rules.md)
+- 🐞 **Error Logging Rules**: Xem chi tiết tại [error_logging_rules.md](rules/error_logging_rules.md)

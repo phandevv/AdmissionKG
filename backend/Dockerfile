@@ -1,22 +1,30 @@
-# Stage 1: Build stage
-FROM maven:3.9.6-eclipse-temurin-17-alpine AS builder
+# Stage 1: Build
+FROM maven:3.9.6-eclipse-temurin-21-alpine AS builder
 WORKDIR /app
 
-# Copy pom.xml and download dependencies
+# Cache dependencies layer
 COPY pom.xml .
 RUN mvn dependency:go-offline -B
 
-# Copy source code and build package
+# Build
 COPY src ./src
-RUN mvn package -DskipTests
+RUN mvn package -DskipTests -B
 
-# Stage 2: Runtime stage
-FROM eclipse-temurin:17-jre-alpine
+# Stage 2: Runtime (lightweight JRE)
+FROM eclipse-temurin:21-jre-alpine
 WORKDIR /app
 
-# Copy built artifact from builder stage
+# Install curl for healthcheck & tesseract-ocr for scanned PDF OCR
+RUN apk add --no-cache curl tesseract-ocr tesseract-ocr-data-vie tesseract-ocr-data-eng
+
+# Copy built JAR
 COPY --from=builder /app/target/*.jar app.jar
 
 EXPOSE 8080
 
-ENTRYPOINT ["java", "-jar", "app.jar"]
+# JVM tuning cho container
+ENTRYPOINT ["java", \
+  "-XX:+UseContainerSupport", \
+  "-XX:MaxRAMPercentage=75.0", \
+  "-Djava.security.egd=file:/dev/./urandom", \
+  "-jar", "app.jar"]
